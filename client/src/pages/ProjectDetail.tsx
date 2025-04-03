@@ -94,9 +94,9 @@ const ProjectDetail = () => {
           {/* Back Button */}
           <Link
             to="/projects"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-200 bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full hover:bg-gray-800/90 dark:hover:bg-gray-700/90 transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-2.5 mb-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-lg group"
           >
-            <FaArrowLeft className="w-4 h-4" />
+            <FaArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
             Back to Projects
           </Link>
 
