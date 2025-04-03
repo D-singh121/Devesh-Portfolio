@@ -13,6 +13,12 @@ interface Project {
   demoUrl: string;
 }
 
+// Add getImagePath function
+const getImagePath = (path: string) => {
+  if (path.startsWith('http')) return path;
+  return `/Devesh-Portfolio${path}`;
+};
+
 // Import the same projects data from Projects.tsx
 const projects: Project[] = [
   {
@@ -88,9 +94,9 @@ const ProjectDetail = () => {
           {/* Back Button */}
           <Link
             to="/projects"
-            className="inline-flex items-center gap-2 px-6 py-2.5 mb-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-lg group"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-200 bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full hover:bg-gray-800/90 dark:hover:bg-gray-700/90 transition-all duration-200"
           >
-            <FaArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+            <FaArrowLeft className="w-4 h-4" />
             Back to Projects
           </Link>
 
@@ -120,7 +126,7 @@ const ProjectDetail = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 dark:from-indigo-500/30 dark:to-purple-500/30" />
             <img
-              src={project.image}
+              src={getImagePath(project.image)}
               alt={project.title}
               className="w-full h-[200px] md:h-[400px] object-cover transition-all duration-300"
             />
