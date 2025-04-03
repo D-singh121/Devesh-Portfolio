@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaTelegram, FaSlack, FaDiscord } from 'react-icons/fa';
 import { SiHashnode } from 'react-icons/si';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
+
   const handleWhatsAppClick = () => {
     window.open(`https://wa.me/919082444800?text=Hi%20Devesh,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!`, '_blank');
   };
@@ -21,6 +28,13 @@ const Footer = () => {
     { icon: <SiHashnode className="w-5 h-5" />, url: "https://devesh121.hashnode.dev/", label: "Hashnode", color: "hover:text-blue-600" },
     { icon: <FaWhatsapp className="w-5 h-5" />, url: "#", label: "WhatsApp", color: "hover:text-green-500", onClick: handleWhatsAppClick },
     { icon: <FaDiscord className="w-5 h-5" />, url: "#", label: "Discord", color: "hover:text-indigo-500", onClick: handleDiscordClick }
+  ];
+
+  const quickLinks = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/projects", label: "Projects" },
+    { path: "/contact", label: "Contact" }
   ];
 
   return (
@@ -42,10 +56,15 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-indigo-400">Quick Links</h4>
             <nav className="flex flex-col space-y-2">
-              <Link to="/" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Home</Link>
-              <Link to="/about" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">About</Link>
-              <Link to="/projects" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Projects</Link>
-              <Link to="/contact" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Contact</Link>
+              {quickLinks.map((link) => (
+                <button
+                  key={link.path}
+                  onClick={() => handleNavigation(link.path)}
+                  className="text-left text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300"
+                >
+                  {link.label}
+                </button>
+              ))}
             </nav>
           </div>
 
@@ -79,13 +98,19 @@ const Footer = () => {
               © {new Date().getFullYear()} DC. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0">
-              <Link to="/privacy" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300">
+              <button
+                onClick={() => handleNavigation('/privacy')}
+                className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300"
+              >
                 Privacy Policy
-              </Link>
+              </button>
               <span className="mx-2 text-gray-400 dark:text-gray-600">•</span>
-              <Link to="/terms" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300">
+              <button
+                onClick={() => handleNavigation('/terms')}
+                className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300"
+              >
                 Terms of Service
-              </Link>
+              </button>
             </div>
           </div>
         </div>
