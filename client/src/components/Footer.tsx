@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaTelegram, FaSlack, FaDiscord } from 'react-icons/fa';
 import { SiHashnode } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const handleWhatsAppClick = () => {
     window.open(`https://wa.me/919082444800?text=Hi%20Devesh,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!`, '_blank');
+  };
+
+  const handleDiscordClick = () => {
+    // Replace this URL with your Discord server's invite link
+    // For example: https://discord.gg/your-invite-code
+    window.open('https://discord.gg/your-invite-code', '_blank');
   };
 
   const socialLinks = [
@@ -13,9 +20,7 @@ const Footer = () => {
     { icon: <FaTwitter className="w-5 h-5" />, url: "https://x.com/Dee_Singh121", label: "Twitter", color: "hover:text-blue-400" },
     { icon: <SiHashnode className="w-5 h-5" />, url: "https://devesh121.hashnode.dev/", label: "Hashnode", color: "hover:text-blue-600" },
     { icon: <FaWhatsapp className="w-5 h-5" />, url: "#", label: "WhatsApp", color: "hover:text-green-500", onClick: handleWhatsAppClick },
-    { icon: <FaTelegram className="w-5 h-5" />, url: "https://t.me/yourusername", label: "Telegram", color: "hover:text-blue-500" },
-    { icon: <FaSlack className="w-5 h-5" />, url: "https://yourworkspace.slack.com", label: "Slack", color: "hover:text-orange-500" },
-    { icon: <FaDiscord className="w-5 h-5" />, url: "https://discord.gg/yourinvite", label: "Discord", color: "hover:text-indigo-500" }
+    { icon: <FaDiscord className="w-5 h-5" />, url: "#", label: "Discord", color: "hover:text-indigo-500", onClick: handleDiscordClick }
   ];
 
   return (
@@ -37,10 +42,10 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-indigo-400">Quick Links</h4>
             <nav className="flex flex-col space-y-2">
-              <a href="/" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Home</a>
-              <a href="/about" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">About</a>
-              <a href="/projects" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Projects</a>
-              <a href="/contact" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Contact</a>
+              <Link to="/" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Home</Link>
+              <Link to="/about" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">About</Link>
+              <Link to="/projects" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Projects</Link>
+              <Link to="/contact" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-300">Contact</Link>
             </nav>
           </div>
 
@@ -74,13 +79,13 @@ const Footer = () => {
               © {new Date().getFullYear()} DC. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0">
-              <a href="#" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300">
+              <Link to="/privacy" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300">
                 Privacy Policy
-              </a>
+              </Link>
               <span className="mx-2 text-gray-400 dark:text-gray-600">•</span>
-              <a href="#" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300">
+              <Link to="/terms" className="text-gray-600 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400 text-sm transition-colors duration-300">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
