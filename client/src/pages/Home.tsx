@@ -130,12 +130,12 @@ const Home = () => {
               >
                 View Projects
               </Link>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="w-48 sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 dark:bg-gray-800/20 text-gray-700 dark:text-gray-200 backdrop-blur-sm rounded-full hover:bg-white/10 dark:hover:bg-gray-700/40 transition-all duration-300 border-2 border-gray-300 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/40"
               >
                 Contact Me
-              </a>
+              </Link>
             </motion.div>
 
             {/* Social Links */}
