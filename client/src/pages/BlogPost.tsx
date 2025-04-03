@@ -184,7 +184,7 @@ const BlogPost = () => {
         >
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-200 bg-gray-900/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full hover:bg-gray-800/90 dark:hover:bg-gray-700/90 transition-all duration-200"
           >
             <FaArrowLeft className="w-4 h-4" />
             Back to Blog
