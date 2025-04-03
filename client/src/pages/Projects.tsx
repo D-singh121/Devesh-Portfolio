@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 interface Project {
   id: number;
@@ -15,15 +16,25 @@ interface Project {
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const navigate = useNavigate();
+
+  const getImagePath = (path: string) => {
+    if (path.startsWith('http')) return path;
+    return `/Devesh-Portfolio${path}`;
+  };
+
+  const handleProjectClick = (projectId: number) => {
+    navigate(`/projects/${projectId}`);
+  };
 
   const projects: Project[] = [
     {
       id: 1,
       title: 'MovieMania: A Netflix-Inspired Movie App',
       description: 'MovieMania is a feature-rich web application inspired by Netflix, built using the MERN stack',
-      image: '/moviemania_netflix1.png',
+      image: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=800&auto=format&fit=crop&q=80',
       category: 'web',
-      technologies: ['React.js', 'Node.js',"Express.js","Axios",'MongoDB',"Redux-Toolkit","Material-UI","JWT-Authentication","Nodemailer","TMDB-Apis","bcryptjs","Vercel"],
+      technologies: ['React.js', 'Node.js', "Express.js", "Axios", 'MongoDB', "Redux-Toolkit", "Material-UI", "JWT-Authentication", "Nodemailer", "TMDB-Apis", "bcryptjs", "Vercel"],
       githubUrl: 'https://github.com/D-singh121/moviemania_netflix_clone',
       demoUrl: 'https://moviemania-netflix-clone.vercel.app/'
     },
@@ -31,7 +42,7 @@ const Projects = () => {
       id: 2,
       title: 'Task Management App',
       description: 'A collaborative task management application with real-time updates and team features.',
-      image: '/images/projects/task-app.jpg',
+      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&auto=format&fit=crop&q=80',
       category: 'web',
       technologies: ['Vue.js', 'Firebase', 'Tailwind CSS'],
       githubUrl: '#',
@@ -41,9 +52,9 @@ const Projects = () => {
       id: 3,
       title: 'ToDo App',
       description: '​The TodoApp is a simple task management application built using React and the Context API. It allows users to add, edit, and delete tasks, providing an intuitive interface for efficient task management.',
-      image: '/TodoProject1.png',
+      image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=800&auto=format&fit=crop&q=80',
       category: 'web',
-      technologies: ['React.js', 'Context API', 'Tailwind CSS',"Varcel Hosting"],
+      technologies: ['React.js', 'Context API', 'Tailwind CSS', "Vercel Hosting"],
       githubUrl: 'https://github.com/D-singh121/TodoApp',
       demoUrl: 'https://todo-app-pied-psi.vercel.app/'
     },
@@ -51,7 +62,7 @@ const Projects = () => {
       id: 4,
       title: "AI Chat Bot",
       description: "An intelligent chatbot powered by OpenAI's GPT model for customer support.",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2088&q=80",
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80',
       category: "backend",
       technologies: ["Python", "FastAPI", "OpenAI API", "PostgreSQL"],
       githubUrl: "https://github.com/yourusername/ai-chatbot",
@@ -82,7 +93,6 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,7 +117,6 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -115,32 +124,51 @@ const Projects = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2, delay: index * 0.01 }}
-              className="relative bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+              className="relative bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              onClick={() => handleProjectClick(project.id)}
             >
-              <div className="relative aspect-video overflow-hidden group cursor-pointer">
+              <div className="relative aspect-video overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 dark:from-indigo-500/30 dark:to-purple-500/30 group-hover:opacity-75 transition-opacity duration-300 z-10" />
                 <img
-                  src={project.image}
+                  src={getImagePath(project.image)}
                   alt={project.title}
                   className="w-full h-full object-contain bg-gray-100 dark:bg-gray-900 transform group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center gap-6">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
-                  >
-                    <FaGithub className="w-6 h-6 text-white" />
-                  </a>
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
-                  >
-                    <FaExternalLinkAlt className="w-6 h-6 text-white" />
-                  </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent card click when clicking on GitHub link
+                        if (!project.githubUrl.startsWith('http')) {
+                          e.preventDefault();
+                          alert('Invalid GitHub URL');
+                        }
+                      }}
+                    >
+                      <FaGithub className="w-6 h-6 text-white" />
+                    </a>
+                  )}
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent card click when clicking on Demo link
+                        if (!project.demoUrl.startsWith('http')) {
+                          e.preventDefault();
+                          alert('Invalid Demo URL');
+                        }
+                      }}
+                    >
+                      <FaExternalLinkAlt className="w-6 h-6 text-white" />
+                    </a>
+                  )}
                 </div>
               </div>
               <div className="p-6">

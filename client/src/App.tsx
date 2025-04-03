@@ -7,6 +7,8 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import useScrollToTop from './hooks/useScrollToTop';
 
 // Separate component for scroll to top functionality
@@ -46,6 +48,10 @@ const App = () => {
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/privacy" element={<div className="py-16"><h1 className="text-3xl font-bold text-center">Privacy Policy</h1></div>} />
+              <Route path="/terms" element={<div className="py-16"><h1 className="text-3xl font-bold text-center">Terms of Service</h1></div>} />
             </Routes>
           </div>
         </main>
