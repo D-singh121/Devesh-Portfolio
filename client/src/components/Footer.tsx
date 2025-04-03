@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaTelegram, FaSlack, FaDiscord } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaDiscord } from 'react-icons/fa';
 import { SiHashnode } from 'react-icons/si';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const navigate = useNavigate();
